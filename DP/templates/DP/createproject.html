@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block morehead %}
+    <link href="{% static "DP/datetimepicker/css/datepicker3.css" %}" rel="stylesheet">
+    <script src="{% static "DP/datetimepicker/js/bootstrap-datepicker.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<form action="" method="post">{% csrf_token %}
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Project Name</legend>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="name">Project Name</label>
+  <div class="controls">
+    <input id="name" name="name" type="text" placeholder="What is your project name?" class="input-xxlarge" required="">
+  </div>
+</div>
+
+<br>
+
+<!-- Textarea -->
+<div class="control-group">
+  <label class="control-label" for="description">Description</label>
+  <div class="controls">
+    <textarea id="description" name="description" placeholder="Describe your project."></textarea>
+    {{ form.description.errors }}
+  </div>
+</div>
+
+<br>
+
+<div class="control-group">
+    <label class="control-label" for="start_date">Start Date</label>
+    <div class="controls">
+        <div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="yyyy-mm-dd">
+            <input class="datepicker" data-date-format="yyyy-mm-dd" readonly name="start_date">
+{#		    <input class="span2" size="16" type="text" value="2012-02-12" readonly name="start_date">#}
+			<span class="add-on"><i class="icon-calendar"></i></span>
+            {{ form.start_date.errors }}
+	    </div>
+    </div>
+</div><br>
+
+
+<div class="control-group">
+    <label class="control-label" for="end_date">End Date</label>
+    <div class="controls">
+        <div class="input-group date">
+            <input class="datepicker" data-date-format="yyyy-mm-dd" readonly name="end_date" >
+            {{ form.end_date.errors }}
+		</div>
+    </div>
+</div><br>
+
+<!-- Button -->
+<div class="control-group">
+  <label class="control-label" for="singlebutton"></label>
+  <div class="controls">
+    <button id="singlebutton" name="singlebutton" input type="submit" class="btn btn-primary">Create</button>
+  </div>
+</div>
+
+
+
+</fieldset>
+</form>
+
+    </form>
+
+    <script>$('.datepicker').datepicker()</script>
+
+{{ form.errors }}
+
+{% endblock %}

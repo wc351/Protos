@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load DP_extras %}
+{% block content %}
+<form class="form-inline" action="" method="post">{% csrf_token %}
+<fieldset>
+
+<div class="container">
+
+{% include "DP/project_navbar.html" %}
+
+<p>This is where you will be able to manage fields of an existing project.<p>
+
+    <custom div1 class="row clearfix">
+            <div class="col-md-4 column">
+                <h2>Field Viewer</h2>
+                <p>Create the viewer here</p>
+                {% for field in fields %}
+                  <li><a>{{ field.pk }}  {{ field.name }}</a></li>
+                  <div class="control-group">
+                  <label class="control-label" for="singlebutton"></label>
+                  <div class="controls">
+                    <button type="button" onclick="window.location='/fieldupdate/{{ project.pk }}/{{ field|f_type }}/{{ field.pk }}'">Update</button>
+                    <button type="button" onclick="window.location='/viewfield/{{ project.pk }}/{{ field|f_type }}/{{ field.pk }}'">View</button>
+                    <button type="button" onclick="window.location='/fielddelete/{{ project.pk }}/{{ field|f_type }}/{{ field.pk }}'">Delete</button>
+{#                    <button id="singlebutton" name="singlebutton" input type="submit">Delete</button>#}
+                  </div> <br>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-4 column">
+                <h2>Study Object</h2>
+                <p>Update, View, Delete Study Objects.</p>
+                {% for oos in oos_fields %}
+                <li><a>{{ oos.pk }} {{ oos.name }}</a></li>
+                <div class="control-group">
+                  <label class="control-label" for="singlebutton"></label>
+                  <div class="controls">
+
+{#                      url(r'^oosupdate/(?P<project_pk>\d+)/(?P<f_type>\d+)/(?P<field_pk>\d+)/$', views.OOSUpdate.as_view(), name='oosupdate'),#}
+
+                    <button type="button" onclick="window.location='/oosupdate/{{ project.pk }}/{{ oos|oos_type }}/{{ oos.pk }}'">Update</button>
+                    <button type="button" onclick="window.location='/oosview/{{ project.pk }}/{{ oos|oos_type }}/{{ oos.pk }}'">View</button>
+                    <button type="button" onclick="window.location='/oosdelete/{{ project.pk }}/{{ oos|oos_type }}/{{ oos.pk }}'">Delete</button>
+{#                    <button id="singlebutton" name="singlebutton" input type="submit">Delete</button>#}
+                  </div> <br>
+                </div>
+                {% endfor %}
+		</div>
+    </custom div1>
+</div><br>
+    <br>
+
+{% endblock %}
+
+{#<div class="container">#}
+{#	<div class="row clearfix">#}
+{#		<div class="col-md-12 column">#}
+{#			<nav class="navbar navbar-default" role="navigation">#}
+{#				<div class="navbar-header">#}
+{#					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Brand</a>#}
+{#				</div>#}
+{#				#}
+{#				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">#}
+{#					<ul class="nav navbar-nav">#}
+{#						<li class="active">#}
+{#							<a href="#">Link</a>#}
+{#						</li>#}
+{#						<li>#}
+{#							<a href="#">Link</a>#}
+{#						</li>#}
+{#						<li class="dropdown">#}
+{#							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>#}
+{#							<ul class="dropdown-menu">#}
+{#								<li>#}
+{#									<a href="#">Action</a>#}
+{#								</li>#}
+{#								<li>#}
+{#									<a href="#">Another action</a>#}
+{#								</li>#}
+{#								<li>#}
+{#									<a href="#">Something else here</a>#}
+{#								</li>#}
+{#								<li class="divider">#}
+{#								</li>#}
+{#								<li>#}
+{#									<a href="#">Separated link</a>#}
+{#								</li>#}
+{#								<li class="divider">#}
+{#								</li>#}
+{#								<li>#}
+{#									<a href="#">One more separated link</a>#}
+{#								</li>#}
+{#							</ul>#}
+{#						</li>#}
+{#					</ul>#}
+{#					<form class="navbar-form navbar-left" role="search">#}
+{#						<div class="form-group">#}
+{#							<input type="text" class="form-control" />#}
+{#						</div> <button type="submit" class="btn btn-default">Submit</button>#}
+{#					</form>#}
+{#					<ul class="nav navbar-nav navbar-right">#}
+{#						<li>#}
+{#							<a href="#">Link</a>#}
+{#						</li>#}
+{#						<li class="dropdown">#}
+{#							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>#}
+{#							<ul class="dropdown-menu">#}
+{#								<li>#}
+{#									<a href="#">Action</a>#}
+{#								</li>#}
+{#								<li>#}
+{#									<a href="#">Another action</a>#}
+{#								</li>#}
+{#								<li>#}
+{#									<a href="#">Something else here</a>#}
+{#								</li>#}
+{#								<li class="divider">#}
+{#								</li>#}
+{#								<li>#}
+{#									<a href="#">Separated link</a>#}
+{#								</li>#}
+{#							</ul>#}
+{#						</li>#}
+{#					</ul>#}
+{#				</div>#}
+{#				#}
+{#			</nav>#}
+{#		</div>#}
+{#	</div>#}
+{#	<div class="row clearfix">#}
+{#		<div class="col-md-4 column">#}
+{#		</div>#}
+{#		<div class="col-md-4 column">#}
+{#			<h2>#}
+{#				Heading#}
+{#			</h2>#}
+{#			<p>#}
+{#				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.#}
+{#			</p>#}
+{#			<p>#}
+{#				<a class="btn" href="#">View details »</a>#}
+{#			</p>#}
+{#		</div>#}
+{#		<div class="col-md-4 column">#}
+{#			<h2>#}
+{#				Heading#}
+{#			</h2>#}
+{#			<p>#}
+{#				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.#}
+{#			</p>#}
+{#			<p>#}
+{#				<a class="btn" href="#">View details »</a>#}
+{#			</p>#}
+{#		</div>#}
+{#	</div>#}
+{#</div>#}

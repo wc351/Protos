@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block morehead %}
+    <link href="{% static "DP/datetimepicker/css/datepicker3.css" %}" rel="stylesheet">
+    <script src="{% static "DP/datetimepicker/js/bootstrap-datepicker.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+    <form class="form-inline" action="" method="post">{% csrf_token %}
+
+    <div class="container">
+                          <!-- Static navbar -->
+                <div class="navbar navbar-default">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span>
+                            <span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="/">{{ project.name }}Test</a>
+                        <a class="navbar-brand" href="/location/{{ project.pk }}">Location</a>
+                        <a class="navbar-brand" href="/createsite/{{ project.pk }}">Create Site</a>
+                        <a class="navbar-brand" href="/oos/{{ project.pk }}">Create Study Object</a>
+                        <a class="navbar-brand" href="/measurement/{{ project.pk }}">Create Measurement Types</a>
+                        <a class="navbar-brand" href="/managefields/{{ project.pk }}">Manage Fields</a>
+                    </div>
+                </div>
+
+
+<p>This is where you will be able to edit an existing project.<p>
+
+
+<!-- Button -->
+<div class="control-group">
+  <label class="control-label" for="singlebutton"></label>
+  <div class="controls">
+    <button id="singlebutton" name="singlebutton" input type="submit" class="btn btn-primary">Update</button>
+    <button id="singlebutton" name="singlebutton" input type="submit" class="btn btn-primary">View</button>
+    <button id="singlebutton" name="singlebutton" input type="submit" class="btn btn-primary">Delete</button>
+  </div>
+</div>
+
+{% endblock %}

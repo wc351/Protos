@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block morehead %}
+
+{% endblock %}
+
+{% block content %}
+    <form class="form-inline" action="" method="post">{% csrf_token %}
+<fieldset>
+
+{% include "DP/project_navbar.html" %}
+
+<!-- Form Name -->
+<legend>Create Location</legend>
+
+<!-- Select Basic -->
+<div class="control-group">
+  <label class="control-label" for="project">Project</label>
+  <div class="controls">
+    <select type="text" id="project" name="project" class="input-xlarge">
+        {% for project in projects %}
+            <option value="{{ project.pk }}">{{ project.name }}</option>
+        {% endfor %}
+    </select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="collection_area">Location Area Name</label>
+  <div class="controls">
+    <input id="collection_name" name="collection_area" type="text" placeholder="Enter a location name." class="input-xxlarge" required="">
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="control-group">
+  <label class="control-label" for="description">Description</label>
+  <div class="controls">
+      <textarea id="description" name="description" placeholder="Describe your location."></textarea>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="num">Number</label>
+  <div class="controls">
+    <input id="num" name="num" type="text" placeholder="What is the location number?" class="input-xlarge" required="">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="geom">Geometry</label>
+  <div class="controls">
+    <input id="geom" name="geom" type="text" placeholder="Ex. POINT(Lat Lon)" class="input-xlarge">
+
+  </div>
+</div>
+
+<!-- Button -->
+<div class="control-group">
+  <label class="control-label" for="singlebutton"></label>
+  <div class="controls">
+    <button id="singlebutton" name="singlebutton" input type="submit" class="btn btn-primary">Create Location</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+{{ form.errors }}
+{% endblock %}

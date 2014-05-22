@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+    {% include "DP/project_navbar.html" %}
+
+<ul>
+    <table>
+        <tr>
+            <th style="padding-right: 100px">Field Name</th>
+            <th style="padding-right: 100px">Description</th>
+            <th style="padding-right: 100px">Measurements</th>
+            <th style="padding-right: 50px">Nullable</th>
+            <th style="padding-right: 50px">Default</th>
+            <th style="padding-right: 50px">Object of Study</th>
+            <th style="padding-right: 50px">Project</th>
+        </tr>
+
+
+        <tr>
+            <td>{{ field.name }}</td>
+            <td>{{ field.description }}</td>
+            <td>Total Measurements: {{ field.measurements.count }}</td>
+            <td>{{ field.nullable }}</td>
+            <td>{{ field.default }}</td>
+            <td>{{ field.oos }}</td>
+            <td>{{ field.project }}</td>
+        </tr>
+
+    </table>
+</ul>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+

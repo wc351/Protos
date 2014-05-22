@@ -1,0 +1,25 @@
+<div class="navbar navbar-default">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse">
+            <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/projectdashboard/{{ project.pk }}">{{ project.name }}</a>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="/managefields/{{ project.pk }}">Manage Fields</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Create <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/createlocation/{{ project.pk }}">Location</a></li>
+                        <li><a href="/createsite/{{ project.pk }}">Site</a></li>
+                        <li><a href="/createoos/{{ project.pk }}">Study Object</a></li>
+                        <li><a href="/createmeasurement/{{ project.pk }}">Measurement Types</a></li>
+
+                    </ul>
+            </li>
+        </ul>
+    </div>
+</div>

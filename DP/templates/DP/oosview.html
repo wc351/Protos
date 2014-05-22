@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+    {% include "DP/project_navbar.html" %}
+
+<ul>
+    <table>
+        <tr>
+            <th style="padding-right: 100px">Field Name</th>
+            <th style="padding-right: 100px">Description</th>
+            <th style="padding-right: 100px">Created By</th>
+            <th style="padding-right: 50px">Project</th>
+        </tr>
+
+
+        <tr>
+            <td>{{ oos.name }}</td>
+            <td>{{ oos.description }}</td>
+            <td>{{ oos.createdby }}</td>
+            <td>{{ field.project }}</td>
+        </tr>
+    </table>
+</ul>
+
+{% endblock %}

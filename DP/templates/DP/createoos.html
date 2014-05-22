@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block morehead %}
+
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post" class="form-horizontal">{% csrf_token %}
+<fieldset>
+
+{% include "DP/project_navbar.html" %}
+
+<!-- Form Name -->
+<legend>Object of Study</legend>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="name">Object Name</label>
+  <div class="controls">
+    <input id="name" name="name" type="text" placeholder="Enter an object name." class="input-xxlarge" required="">
+    {{ form.name.errors }}
+  </div>
+</div>
+<br>
+<!-- Textarea -->
+<div class="control-group">
+  <label class="control-label" for="description">Description</label>
+  <div class="controls">
+    <textarea id="description" name="description" placeholder="Describe your study object."></textarea>
+
+    {{ form.description.errors }}
+  </div>
+</div>
+<br>
+<!-- Button -->
+<div class="control-group">
+  <label class="control-label" for="singlebutton"></label>
+  <div class="controls">
+    <button id="singlebutton" name="singlebutton" input type="submit" class="btn btn-primary">Create</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+{{ form.errors }}
+{% endblock %}

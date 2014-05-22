@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<form class="form-inline" action="" method="post">{% csrf_token %}
+<fieldset>
+
+{% include "DP/project_navbar.html" %}
+
+<!-- Form Name -->
+<legend>Update Form</legend>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="name">Name</label>
+  <div class="controls">
+    <input id="name" name="name" type="text" value="{{ form.name.value }}" placeholder="Name" class="input-xlarge" required="">
+  </div>
+</div>
+
+<br>
+
+<!-- Select Basic -->
+<div class="control-group">
+  <label class="control-label" for="id_oos">Object of Study</label><select id="id_oos" name="oos">
+     <option value="" selected="selected">--------</option>
+        {% for value, text in form.oos.field.choices %}
+            <option value="{{ value }}" selected="selected">{{ text }}</option>
+        {% endfor %}
+     </select>
+  <div class="controls">
+  </div>
+</div>
+
+<br>
+
+<!-- Multiple Radios (inline) -->
+<div class="control-group">
+  <div class="controls">
+      <label for="id_nullable">Nullable:</label> <input checked="checked" id="id_nullable" name="nullable" type="checkbox" />
+  </div>
+</div>
+<br>
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="default">Default Value</label>
+  <div class="controls">
+    <input id="default" name="default" type="text" value="{{ form.default.value }}" placeholder="default" class="input-xlarge" required="">
+  </div>
+</div>
+<br>
+<!-- Textarea -->
+<div class="control-group">
+  <label class="control-label" for="description">Description</label>
+  <div class="controls">
+    <textarea id="description" name="description">{{ form.description.value }}</textarea>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="control-group">
+  <label class="control-label" for="singlebutton"></label>
+  <div class="controls">
+    <button id="singlebutton" name="singlebutton" input type="submit" class="btn btn-primary">Update</button>
+  </div>
+</div>
+
+
+</fieldset>
+</form>
+
+{{ form.errors }}
+
+{% endblock %}

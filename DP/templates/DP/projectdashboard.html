@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+
+{% include "DP/project_navbar.html" %}
+
+			<div class="jumbotron">
+				<h1>This is the {{ project.name }} Dashboard</h1>
+				<p>{{ project.description }} Boom!!!!</p>
+			</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-4 column">
+			<h2>Data Viewer</h2>
+			<p>Create the viewer here</p>
+			<p><a class="btn" href="http://upload.wikimedia.org/wikipedia/en/0/09/DataTNG.jpg">View details »</a></p>
+		</div>
+		<div class="col-md-4 column">
+		</div>
+		<div class="col-md-4 column">
+			<h2>OOS Viewer</h2>
+			<p>	Create the viewer here</p>
+			<p><a class="btn" href=http://actoutwithaislinn.bangordailynews.com/files/2013/09/BlandingsTurtle.jpg>View Study Objects »</a>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

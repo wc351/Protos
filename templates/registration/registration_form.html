@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<form class="container" method="post" action=".">{%  csrf_token %}
+      <div class="row span3">
+            <h2 class="form-signin-heading span3float">Please Register</h2>
+            <input type="text" class="form-control span3float" placeholder="Username" autofocus id="id_username" name="username" required>
+            <input type="email" class="form-control span3float" placeholder="Email" id="id_email" name="email" required>
+            <input type="password" class="form-control span3float" placeholder="Password" id="id_password1" name="password1" required>
+            <input type="password" class="form-control span3float" placeholder="Password Again" id="id_password2" name="password2" required>
+            <button class="btn btn-lg btn-primary btn-block span3" type="submit">Register</button>
+      </div>
+    {% if form.errors %}
+        {% if form.password1 != form.password2 %}
+            <p>Password did not match. Please try again.</p>
+        {% endif %}
+    {% endif %}
+</form>
+{% endblock %}

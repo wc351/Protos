@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form class="container" method="post" action=".">{%  csrf_token %}
+      <div class="row span4">
+        <h2 class="form-signin-heading span3float">Please Sign In</h2>
+
+            <input type="text" class="form-control span3float" placeholder="Username"  autofocus id="id_username" name="username">
+            <input type="password" class="form-control span3float" placeholder="Password" id="id_password" name="password">
+
+        <button class="btn btn-lg btn-primary btn-block span3" type="submit">Sign in</button>
+
+        <label style="font-size: 8pt" class="checkbox span4">
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+
+        <center><a style="font-size: 12pt" class="span3" href='/accounts/register/'>Need An Account?</a></center>
+</form>
+
+{% endblock %}
